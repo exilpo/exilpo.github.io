@@ -1,0 +1,316 @@
+<!DOCTYPE html">
+
+
+<html lang="fr">
+  <head>
+  <link rel="icon" type="image/png" href="favicon.png" />
+<script>
+
+            var TxtRotate = function(el, toRotate, period) {
+              this.toRotate = toRotate;
+              this.el = el;
+              this.loopNum = 0;
+              this.period = parseInt(period, 10) || 2000;
+              this.txt = '';
+              this.tick();
+              this.isDeleting = false;
+            };
+            
+            TxtRotate.prototype.tick = function() {
+              var i = this.loopNum % this.toRotate.length;
+              var fullTxt = this.toRotate[i];
+            
+              if (this.isDeleting) {
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+              } else {
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
+              }
+            
+              this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+            
+              var that = this;
+              var delta = 300 - Math.random() * 100;
+            
+              if (this.isDeleting) { delta /= 2; }
+            
+              if (!this.isDeleting && this.txt === fullTxt) {
+                delta = this.period;
+                this.isDeleting = true;
+              } else if (this.isDeleting && this.txt === '') {
+                this.isDeleting = false;
+                this.loopNum++;
+                delta = 500;
+              }
+            
+              setTimeout(function() {
+                that.tick();
+              }, delta);
+            };
+            
+            window.onload = function() {
+              var elements = document.getElementsByClassName('txt-rotate');
+              for (var i=0; i<elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-rotate');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                  new TxtRotate(elements[i], JSON.parse(toRotate), period);
+                }
+              }
+              // INJECT CSS
+              var css = document.createElement("style");
+              css.type = "text/css";
+              css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+              document.body.appendChild(css);
+            };
+            
+            
+            </script>
+
+<style>
+        html,body {
+          font-family: 'Raleway', sans-serif;
+          padding: 1em 2em;
+          font-size: 18px;
+          background: #222;
+          color: #aaa
+        }
+        
+        h1,h2 {
+          font-weight: 200;
+          margin: 0.4em 0;
+        }
+        h1 { font-size: 3.5em; }
+        h2 {
+          color: #888;
+          font-size: 2em;
+        }
+        
+        </style>
+</head>
+
+
+
+
+    <meta charset="utf-8" />
+    <title>Exil Note de l'auteure </title>
+
+<style type="text/css">
+ /* unvisited link */
+a:link {
+    color: red;
+}
+
+/* visited link */
+a:visited {
+    color: red;
+}
+
+/* mouse over link */
+a:hover {
+    color: hotpink;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+} 
+ul#menu { 
+width : 100%; 
+height : 30px;
+margin : 2em 0 0 0;
+padding : 0;
+background-color : #086A87;
+border : 1px dashed black;
+list-style-type : none; 
+}
+
+img {
+    max-width: 100%;
+    height: auto;      
+}
+
+img#banniere {
+    width: 100%;
+    height: 250px;      
+}
+
+ 
+ul#menu li {
+padding : 0 0.5em;  
+line-height : 30px;
+}
+ 
+ul#menu li.bouton_gauche {
+float : left;
+border-right : 1px dashed black; 
+}
+ 
+ul#menu li.bouton_droite {
+float : right;
+border-left : 1px dashed black;
+}
+ 
+ul#menu a {
+color : black;
+text-decoration : none;
+padding : 0 0.5em; 
+font :  0.8em "Trebuchet MS";
+}
+ 
+ul#menu a:hover { text-decoration : underline; }
+ 
+ul#menu a img { 
+border : none;
+padding :  0 0.3em;
+}
+
+</style>
+  
+  </head>
+ 
+	<body>
+	<img id="banniere" src="Banniere.jpg" alt="banniere"> 
+
+	<ul id="menu">
+      <li class="bouton_gauche"><a href="./ChapitreI.html.html">Chapitre I</a></li>
+      <li class="bouton_gauche"><a href="./ChapitreII.html.html">Chapitre II</a></li>
+      <li class="bouton_gauche"><a href="./ChapitreIII.html.html">Chapitre III</a></li>
+      <li class="bouton_gauche"><a href="./Jesuisnoussommes.html.html">Je suis, Tu es, Nous sommes</a></li>
+      <li class="bouton_droite"><a href="./Carnetdebord.html.html">Carnet de bord</a></li>
+      <li class="bouton_droite"><a href="./SitographieCredits.html.html">Sitographie, Crédits</a></li>
+      <li class="bouton_droite"><a href="./Notedel'auteure.html.html">Note sur l'auteure</a></li>
+      
+      </ul>
+	<div id="contenu">
+	<!doctype html>
+<html>
+<head>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+</head>
+<body>
+
+<div id="citation">
+
+</div>
+
+
+<script type="text/javascript">
+	var showText = function (target, message, index, interval) {   
+  		if (index < message.length) {
+    		$(target).append(message[index++]);
+    		setTimeout(function () { showText(target, message, index, interval); }, interval);
+  		}
+	}
+
+	$(window).ready(function() {
+		showText("#citation", "Etudiante en troisième année d’Humanité Sciences de l’Information à l’Université de Lille, je vous invite à découvrir ce site qui soumet une réflexion sur l’expatriation. En partant de l’Antiquité à nos jours, je vous propose de découvrir trois personnalités qui ont vécu un exil. J’ai choisi d’allier à ce sujet, qui me tient à coeur, ma passion pour l’écriture. J’ai imaginé ce site de manière à ce qu’il soit attractif et interactif tout en vous exposant une piste de réflexion propre à chacun(e). En espérant, que ce site vous apporte autant qu’il l’a fait pour moi, je vous souhaite une bonne découverte. ", 0, 100);   
+	});
+	function goToPage(numPage){
+        $("#magazine").turn("page", numPage);
+    }
+	$(window).bind('keydown', function(e){
+		
+		if (e.keyCode==37)
+			$('#magazine').turn('previous');
+		else if (e.keyCode==39)
+			$('#magazine').turn('next');
+			
+	});
+
+	
+</script>
+
+</body>
+</html>
+</html>		
+	
+	</div>
+		
+	</body>
+	</html>
+	<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Your first HTML form</title>
+</head>
+
+<body>
+    <form action="mailto:sophie.marles@etu.univ-lille3.fr" method="post" enctype="text/plain">
+        <div>
+          <label for="name">Name:</label> <input type="text" id="name" name="user_name">
+        </div>
+        <div>
+          <label for="mail">E-mail:</label> <input type="email" id="mail" name="user_mail">
+        </div>
+        <div>
+          <label for="msg">Message:</label> <textarea id="msg" name="user_message"></textarea>
+        </div>
+        <div class="button">
+          <button type="submit">Send your message</button>
+        </div>
+    </form>
+</body>
+
+</html>
+
+<style>
+form {
+  /* Uniquement centrer le formulaire sur la page */
+  margin: 0 auto;
+  width: 400px;
+  /* Encadré pour voir les limites du formulaire */
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+}
+
+form div + div {
+  margin-top: 1em;
+}
+
+label {
+  /* Pour être sûrs que toutes les étiquettes ont même taille et sont correctement alignées */
+  display: inline-block;
+  width: 90px;
+  text-align: right;
+}
+
+input, textarea {
+  /* Pour s'assurer que tous les champs texte ont la même police.
+     Par défaut, les textareas ont une police monospace */
+  font: 1em sans-serif;
+
+  /* Pour que tous les champs texte aient la même dimension */
+  width: 300px;
+  box-sizing: border-box;
+
+  /* Pour harmoniser le look & feel des bordures des champs texte */
+  border: 1px solid #999;
+}
+
+input:focus, textarea:focus {
+  /* Pour souligner légèrement les éléments actifs */
+  border-color: #000;
+}
+
+textarea {
+  /* Pour aligner les champs texte multi‑ligne avec leur étiquette */
+  vertical-align: top;
+
+  /* Pour donner assez de place pour écrire du texte */
+  height: 5em;
+}
+
+.button {
+  /* Pour placer le bouton à la même position que les champs texte */
+  padding-left: 90px; /* même taille que les étiquettes */
+}
+
+button {
+  /* Cette marge supplémentaire représente grosso modo le même espace que celui
+     entre les étiquettes et les champs texte */
+  margin-left: .5em;
+}
+</style>

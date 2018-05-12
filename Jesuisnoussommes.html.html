@@ -1,0 +1,216 @@
+<!DOCTYPE html">
+<html lang="fr">
+<html>
+<head>
+<link rel="icon" type="image/png" href="favicon.png" />
+    <script>
+
+            var TxtRotate = function(el, toRotate, period) {
+              this.toRotate = toRotate;
+              this.el = el;
+              this.loopNum = 0;
+              this.period = parseInt(period, 10) || 2000;
+              this.txt = '';
+              this.tick();
+              this.isDeleting = false;
+            };
+            
+            TxtRotate.prototype.tick = function() {
+              var i = this.loopNum % this.toRotate.length;
+              var fullTxt = this.toRotate[i];
+            
+              if (this.isDeleting) {
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+              } else {
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
+              }
+            
+              this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+            
+              var that = this;
+              var delta = 300 - Math.random() * 100;
+            
+              if (this.isDeleting) { delta /= 2; }
+            
+              if (!this.isDeleting && this.txt === fullTxt) {
+                delta = this.period;
+                this.isDeleting = true;
+              } else if (this.isDeleting && this.txt === '') {
+                this.isDeleting = false;
+                this.loopNum++;
+                delta = 500;
+              }
+            
+              setTimeout(function() {
+                that.tick();
+              }, delta);
+            };
+            
+            window.onload = function() {
+              var elements = document.getElementsByClassName('txt-rotate');
+              for (var i=0; i<elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-rotate');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                  new TxtRotate(elements[i], JSON.parse(toRotate), period);
+                }
+              }
+              // INJECT CSS
+              var css = document.createElement("style");
+              css.type = "text/css";
+              css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+              document.body.appendChild(css);
+            };
+            
+            
+            </script>
+
+<style>
+        html,body {
+          font-family: 'Raleway', sans-serif;
+          padding: 1em 2em;
+          font-size: 18px;
+          background: #222;
+          color: #aaa
+        }
+        
+        h1,h2 {
+          font-weight: 200;
+          margin: 0.4em 0;
+        }
+        h1 { font-size: 3.5em; }
+        h2 {
+          color: #888;
+          font-size: 2em;
+        }
+        
+        </style>
+</head>
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
+    <h1> Altérité et complémentarité
+      <span
+         class="txt-rotate"
+         data-period="2000"
+           data-rotate='[ "Je suis", "Tu es", "Nous sommes."]'></span>
+    </h1>
+ 
+    
+</html>
+
+  <head>
+  
+    <meta charset="utf-8" />
+    <title>Exil Je suis,tu es, nous sommes</title>
+
+<style type="text/css">
+ /* unvisited link */
+a:link {
+    color: red;
+}
+
+/* visited link */
+a:visited {
+    color: red;
+}
+
+/* mouse over link */
+a:hover {
+    color: hotpink;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+} 
+ul#menu { 
+width : 100%; 
+height : 30px;
+margin : 2em 0 0 0;
+padding : 0;
+background-color : #086A87;
+border : 1px dashed black;
+list-style-type : none; 
+}
+
+img {
+    max-width: 100%;
+    height: auto;      
+}
+
+img#banniere {
+    width: 100%;
+    height: 250px;      
+}
+
+ 
+ul#menu li {
+padding : 0 0.5em;  
+line-height : 30px;
+}
+ 
+ul#menu li.bouton_gauche {
+float : left;
+border-right : 1px dashed black; 
+}
+ 
+ul#menu li.bouton_droite {
+float : right;
+border-left : 1px dashed black;
+}
+ 
+ul#menu a {
+color : black;
+text-decoration : none;
+padding : 0 0.5em; 
+font :  0.8em "Trebuchet MS";
+}
+ 
+ul#menu a:hover { text-decoration : underline; }
+ 
+ul#menu a img { 
+border : none;
+padding :  0 0.3em;
+}
+
+</style>
+  
+  </head>
+  
+	 
+	<body>
+	
+	<img id="banniere" src="Banniere.jpg" alt="banniere"> 
+	<ul id="menu">
+      <li class="bouton_gauche"><a href="./ChapitreI.html.html">Chapitre I</a></li>
+      <li class="bouton_gauche"><a href="./ChapitreII.html.html">Chapitre II</a></li>
+      <li class="bouton_gauche"><a href="./ChapitreIII.html.html">Chapitre III</a></li>
+      <li class="bouton_gauche"><a href="./Jesuisnoussommes.html.html">Je suis, Tu es, Nous sommes</a></li>
+      <li class="bouton_droite"><a href="./Carnetdebord.html.html">Carnet de bord</a></li>
+      <li class="bouton_droite"><a href="./SitographieCredits.html.html">Sitographie, Crédits</a></li>
+      <li class="bouton_droite"><a href="./Notedel'auteure.html.html">Note sur l'auteure</a></li>
+      
+      </ul>
+	<div id="contenu">
+	
+	<iframe src="https://h5p.org/h5p/embed/237782" width="1090" height="706" frameborder="0" allowfullscreen="allowfullscreen"></iframe><script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script>
+	Découvrez ma timeline ci-dessous.
+	<iframe src="https://h5p.org/h5p/embed/230202" width="1090 height="625" frameborder="0" allowfullscreen="allowfullscreen"></iframe><script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script>
+	
+
+	<iframe src="https://h5p.org/h5p/embed/237807" width="1090" height="706" frameborder="0" allowfullscreen="allowfullscreen"></iframe><script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script>
+	Découvrez ma timeline ci-dessous.
+	<iframe src="https://h5p.org/h5p/embed/237850" width="1090" height="625" frameborder="0" allowfullscreen="allowfullscreen"></iframe><script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script>
+
+	<iframe src="https://h5p.org/h5p/embed/237810" width="1090" height="706" frameborder="0" allowfullscreen="allowfullscreen"></iframe><script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script>
+	Découvrez ma timeline ci-dessous.
+	<iframe src="https://h5p.org/h5p/embed/238148" width="1090" height="625" frameborder="0" allowfullscreen="allowfullscreen"></iframe><script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script>
+	
+	
+	
+	</div>
+	<a href="#">Haut de page</a>
+	
+
+	</body>
+	</html>
